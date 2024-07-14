@@ -160,7 +160,14 @@ public class Model {
         Tile currTile = board.tile(x, y);
         int myValue = currTile.value();
         int targetY = y;
-
+        for(int j=1;j<size()-y;j++){
+            if(tile(x,y+j)==null){
+                targetY+=1;
+            }else if(currTile.value()==tile(x,y+j).value()){
+                targetY+=1;
+            }
+        }
+        board.move(x,targetY,currTile);
         // TODO: Tasks 5, 6, and 10. Fill in this function.
     }
 
@@ -171,6 +178,7 @@ public class Model {
      * */
     public void tiltColumn(int x) {
         // TODO: Task 7. Fill in this function.
+        
     }
 
     public void tilt(Side side) {

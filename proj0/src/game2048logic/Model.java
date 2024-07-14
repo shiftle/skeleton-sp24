@@ -167,7 +167,10 @@ public class Model {
                 targetY+=1;
             }
         }
-        board.move(x,targetY,currTile);
+        if(targetY!=y){
+            board.move(x,targetY,currTile);
+
+        }
         // TODO: Tasks 5, 6, and 10. Fill in this function.
     }
 
@@ -187,7 +190,9 @@ public class Model {
 
     public void tilt(Side side) {
         // TODO: Tasks 8 and 9. Fill in this function.
-        
+        for(int i=0;i<size();i++){
+            tiltColumn(i);
+        }
     }
 
     /** Tilts every column of the board toward SIDE.

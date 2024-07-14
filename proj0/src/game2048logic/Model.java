@@ -15,6 +15,7 @@ public class Model {
     private final Board board;
     /** Current score. */
     private int score;
+    private int block;
     /* Coordinate System: column x, row y of the board (where x = 0,
      * y = 0 is the lower-left corner of the board) will correspond
      * to board.tile(x, y).  Be careful!
@@ -163,16 +164,18 @@ public class Model {
             if(tile(x,y+j)==null){
                 targetY+=1;
             }else if(currTile.value()!=tile(x,y+j).value()){
-                
+                block=1;
             }
-            else if(currTile.value()==tile(x,y+j).value()){
+            else if(currTile.value()==tile(x,y+j).value()&&block==0){
                 if(!tile(x,y+j).wasMerged()){
                     targetY+=1;
                     score+=myValue*2;
                 }
             }
         }
+        block=0;
         if(targetY!=y){
+
             board.move(x,targetY,currTile);
         }
         // TODO: Tasks 5, 6, and 10. Fill in this function.
